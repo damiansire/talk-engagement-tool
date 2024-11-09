@@ -1,35 +1,40 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { request } from '@octokit/request';
-import { environment } from '../environments/environment';
+import { environment } from '../../../enviorements/enviorements';
+import { starsMock } from './stars.mock';
+import { GithubStarsResponse, StarredItem } from '../interface/stars.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GithubService {
-  constructor() {}
+  stars = signal<StarredItem[]>([]);
+
+  constructor() {
+    this.getStars();
+  }
 
   async getStars(owner = 'damiansire', repo = 'angular-examples') {
     try {
-      let allStargazers: any = [];
+      let allStargazers: StarredItem[] = [];
       let page = 1;
       let hasNextPage = true;
 
       while (hasNextPage) {
-        const result = await request('GET /repos/{owner}/{repo}/stargazers', {
+        const result = (await request('GET /repos/{owner}/{repo}/stargazers', {
           headers: {
             authorization: `token ${environment.githubToken}`,
             Accept: 'application/vnd.github.star+json',
           },
           owner: owner,
           repo: repo,
-          page: page, // Add page parameter
-          per_page: 200, // Optionally increase per_page for efficiency
-        });
+          page: page,
+          per_page: 200,
+        })) as GithubStarsResponse;
 
         allStargazers = allStargazers.concat(result.data);
 
-        // Check for next page using Link header
-        const linkHeader = result.headers.link;
+        const linkHeader = result.headers['link'];
         hasNextPage =
           linkHeader != undefined && linkHeader.includes('rel="next"');
 
@@ -39,10 +44,11 @@ export class GithubService {
       console.log(
         `The repository ${owner}/${repo} has ${allStargazers.length} stars.`
       );
-      return allStargazers;
+
+      this.stars.set(allStargazers);
     } catch (error) {
       console.error('Error fetching repository stars:', error);
-      return [];
+      this.stars.set([]);
     }
   }
 
