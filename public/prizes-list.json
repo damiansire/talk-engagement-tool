@@ -1,0 +1,32 @@
+[
+    {
+        "name": "ball",
+        "icon": "ball.webp",
+        "amount": 1
+    },
+    {
+        "name": "chocolate-coin",
+        "icon": "chocolate-coin.webp",
+        "amount": 24
+    },
+    {
+        "name": "coffe",
+        "icon": "coffe.webp",
+        "amount": 3
+    },
+    {
+        "name": "confiteca-plop",
+        "icon": "confiteca-plop.webp",
+        "amount": 1
+    },
+    {
+        "name": "cotton-candy",
+        "icon": "cotton-candy.webp",
+        "amount": 1
+    },
+    {
+        "name": "ring-pop",
+        "icon": "ring-pop.webp",
+        "amount": 1
+    }
+]
