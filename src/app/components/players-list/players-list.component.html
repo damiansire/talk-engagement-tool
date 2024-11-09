@@ -1,1 +1,7 @@
-<p>players-list works!</p>
+@if (githubService.stars().length > 0) {
+<div class="player-list-container">
+    @for (star of githubService.stars();track $index) {
+    <app-player-card [user]="star.user" />
+    }
+</div>
+}

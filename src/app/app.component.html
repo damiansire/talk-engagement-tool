@@ -1,10 +1,14 @@
 <div>
-  <div>
-    <app-prizes />
+  <div style="display: flex;">
+    <div style="flex-grow: 1;">
+      <app-prizes />
+    </div>
     <button>Refresh</button>
   </div>
-  <div>
+  <div style="display: flex;">
     <app-players-information />
-    <app-players-list />
+    <div style="flex-grow: 1; padding: 1rem;">
+      <app-players-list />
+    </div>
   </div>
 </div>
