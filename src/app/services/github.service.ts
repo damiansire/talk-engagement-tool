@@ -8,7 +8,7 @@ import { GithubStarsResponse, StarredItem } from '../interface/stars.interface';
   providedIn: 'root',
 })
 export class GithubService {
-  stars = signal<StarredItem[]>(starsMock);
+  stars = signal<StarredItem[]>([]);
   repoData = signal<null | any>(null);
 
   defaultRepo = 'github-raffle';
@@ -47,7 +47,12 @@ export class GithubService {
         `The repository ${owner}/${repo} has ${allStargazers.length} stars.`
       );
 
-      this.stars.set(allStargazers);
+      const finalResult = allStargazers.filter((x) => {
+        const date = new Date(x.starred_at);
+        return date.getDate() > 14;
+      });
+
+      this.stars.set(finalResult);
     } catch (error) {
       console.error('Error fetching repository stars:', error);
       this.stars.set([]);
@@ -71,7 +76,7 @@ export class GithubService {
   }
 
   async refresh() {
-    //this.getStars();
+    this.getStars();
     this.getRepoData();
   }
 }
