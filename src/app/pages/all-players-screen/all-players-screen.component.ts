@@ -4,6 +4,7 @@ import { PlayersInformationComponent } from '../../components/players-informatio
 import { PlayersListComponent } from '../../components/players-list/players-list.component';
 import { PrizeListComponent } from '../../components/prize-list/prize-list.component';
 import { SortPriceListComponent } from '../../components/sort-price-list/sort-price-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-players-screen',
@@ -20,9 +21,13 @@ import { SortPriceListComponent } from '../../components/sort-price-list/sort-pr
 export class AllPlayersScreenComponent {
   title = 'github-raffle';
   githubService = inject(GithubService);
+  router = inject(Router);
   ngOnInit() {}
 
   refresh() {
     this.githubService.refresh();
+  }
+  startRaffle() {
+    this.router.navigate(['/raffle']);
   }
 }
