@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
 import { Prize } from '../interface/prizes.interface';
@@ -8,6 +8,11 @@ import { Prize } from '../interface/prizes.interface';
 })
 export class PrizesService {
   prizes = signal<Prize[]>([]);
+  prizesAmount = computed(() => {
+    return this.prizes().reduce((acc, curr) => {
+      return acc + curr.amount;
+    }, 0);
+  });
 
   constructor(private http: HttpClient) {
     this.getPrizes();
