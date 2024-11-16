@@ -1,5 +1,5 @@
 export interface Prize {
   name: string;
-  icon: string;
+  iconSrc: string;
   amount: number;
 }

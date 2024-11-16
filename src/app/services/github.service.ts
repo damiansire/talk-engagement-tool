@@ -8,13 +8,15 @@ import { GithubStarsResponse, StarredItem } from '../interface/stars.interface';
   providedIn: 'root',
 })
 export class GithubService {
-  stars = signal<StarredItem[]>([]);
+  stars = signal<StarredItem[]>(starsMock);
+  repoData = signal<null | any>(null);
 
+  defaultRepo = 'github-raffle';
   constructor() {
-    this.getStars();
+    this.refresh();
   }
 
-  async getStars(owner = 'damiansire', repo = 'angular-examples') {
+  async getStars(owner = 'damiansire', repo = this.defaultRepo) {
     try {
       let allStargazers: StarredItem[] = [];
       let page = 1;
@@ -52,7 +54,7 @@ export class GithubService {
     }
   }
 
-  async getRepoData(owner = 'damiansire', repo = 'angular-examples') {
+  async getRepoData(owner = 'damiansire', repo = this.defaultRepo) {
     try {
       const result = await request('GET /repos/{owner}/{repo}', {
         headers: {
@@ -62,11 +64,14 @@ export class GithubService {
         repo: repo,
       });
 
-      console.log(`The repository ${owner}/${repo} has ${result.data} stars.`);
-      return result.data;
+      this.repoData.set(result.data);
     } catch (error) {
       console.error('Error fetching repository stars:', error);
-      return '';
     }
+  }
+
+  async refresh() {
+    //this.getStars();
+    this.getRepoData();
   }
 }

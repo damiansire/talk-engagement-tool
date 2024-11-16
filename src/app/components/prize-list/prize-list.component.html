@@ -1,11 +1,11 @@
 <ul style="display: flex; height: 100%; margin: 0;">
     @for (prize of prizesService.prizes(); track $index) {
     <li style="display: flex; flex-direction: column; flex: 1;">
-        <div>
+        <div style="text-align: center;">
             <span style="text-align: center;">{{ prize.name }}</span>
         </div>
         <div style="flex: 1; display: flex; justify-content: center; align-items: center; height: 100%;">
-            <img src="prizes-icons/{{prize.icon}}" alt="{{ prize.name }}" style="max-width: 100%; max-height: 100%;">
+            <img src="prizes-icons/{{prize.iconSrc}}" alt="{{ prize.name }}" style="max-width: 100%; max-height: 100%;">
         </div>
     </li>
     }

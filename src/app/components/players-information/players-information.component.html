@@ -1,1 +1,25 @@
-<p>players-information works!</p>
+@if (githubService.repoData()) {
+<ul style="list-style-type: none;">
+    <li>
+        <div style="display: flex;justify-content: space-evenly;"> <img width="50px" src="/icons/player.webp">
+            <div style="align-content: center;
+    font-size: 29px;">
+                <span> {{githubService.repoData().stargazers_count}} </span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div>Estrellitas del repo</div>
+        <div style="    flex-wrap: wrap;
+    display: flex;
+    width: 125px;
+    margin-top: 5px;">
+            @for (item of [].constructor(githubService.repoData().stargazers_count); track $index) {
+            <div>
+                <img width="25" src="/icons/star.png">
+            </div>
+            }
+        </div>
+    </li>
+</ul>
+}
