@@ -1,4 +1,4 @@
-export interface User {
+export interface Player {
   login: string;
   id: number;
   node_id: string;
@@ -22,7 +22,7 @@ export interface User {
 
 export interface StarredItem {
   starred_at: string;
-  user: User;
+  user: Player;
 }
 
 export interface GithubStarsResponse {
