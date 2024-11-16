@@ -1,22 +1,32 @@
 [
     {
+        "id": "alfajor-mouse",
         "name": "Alfajor Mouse",
-        "iconSrc": "alfajores/punta-ballena-mouse.png",
+        "iconSrc": "prizes-icons/alfajores/punta-ballena-mouse.png",
         "amount": 1
     },
     {
+        "id": "alfajor-negro",
         "name": "Alfajor Negro",
-        "iconSrc": "alfajores/punta-ballena-black.png",
+        "iconSrc": "prizes-icons/alfajores/punta-ballena-black.png",
         "amount": 4
     },
     {
         "name": "Alfajor Nubelate",
-        "iconSrc": "alfajores/punta-ballena-nubelate.png",
-        "amount": 1
+        "iconSrc": "prizes-icons/alfajores/punta-ballena-nubelate.png",
+        "amount": 1,
+        "id": "alfajor-nubelate"
     },
     {
+        "id": "alfajor-play",
         "name": "Alfajor Play",
-        "iconSrc": "alfajores/punta-ballena-play.png",
+        "iconSrc": "prizes-icons/alfajores/punta-ballena-play.png",
         "amount": 2
+    },
+    {
+        "id": "camara-hidden",
+        "name": "Camara Hidden",
+        "iconSrc": "prizes-icons/camara.webp",
+        "amount": 10
     }
 ]
