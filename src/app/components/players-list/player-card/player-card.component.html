@@ -1,13 +1,15 @@
-@if(user()){
-<div class="container">
-        <div>
-                <img class="avatar" [src]="user()?.avatar_url" />
-                <!--<img class="avatar"
-                        src="https://imgs.search.brave.com/XvrkFKrdw6cP-rz9aYwqxO4LyxGr5uHFqW0RhO8jl8A/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9mYWtl/aW1nLnBsLzYwMHg0/MDA" />-->
+<div class="flex items-center space-x-2" key={i}>
+        <div class="flex-shrink-0">
+                @if (player()?.avatar_url) {
 
+                <img class="h-10 w-10 rounded-full" [src]="player()?.avatar_url" [alt]="player()?.login">
+                }
+                @else {
+                <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-gray-100">
+                        <span class="text-xl font-medium leading-none text-gray-600">{{player()?.login?.charAt(0)
+                                }}</span>
+                </span>
+                }
         </div>
-        <div>
-                {{ user()?.login }}
-        </div>
+        <span class="text-sm">{{player()?.login}}</span>
 </div>
-}
