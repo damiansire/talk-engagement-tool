@@ -12,13 +12,13 @@ export class SortPriceListComponent {
   sortPrizeService = inject(SortPrizeService);
 
   initSorteo() {
-    this.sortPrizeService.initEnviorement();
+    //this.sortPrizeService.initEnviorement();
   }
 
   nextPrize() {
-    this.sortPrizeService.setNextPrize();
+    //this.sortPrizeService.setNextPrize();
   }
   sortNewPrize() {
-    this.sortPrizeService.sortPrize();
+    //this.sortPrizeService.sortPrize();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { User } from '../../../interface/stars.interface';
+import { Player } from '../../../interface/stars.interface';
 
 @Component({
   selector: 'app-player-card',
@@ -9,5 +9,5 @@ import { User } from '../../../interface/stars.interface';
   styleUrl: './player-card.component.css',
 })
 export class PlayerCardComponent {
-  user = input<User>();
+  player = input<Player>();
 }

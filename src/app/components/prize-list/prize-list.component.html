@@ -1,12 +1,23 @@
-<ul style="display: flex; height: 100%; margin: 0;">
-    @for (prize of prizesService.prizes(); track $index) {
-    <li style="display: flex; flex-direction: column; flex: 1;">
-        <div style="text-align: center;">
-            <span style="text-align: center;">{{ prize.name }}</span>
+<div class="mb-6 rounded-md border shadow-sm">
+    <div class="px-4 py-5 sm:px-6">
+        <div class="flex items-center">
+            <img src="/icons/prize.svg" class="mr-2 h-6 w-6 text-blue-500">
+            <h3 class=" text-lg leading-6 font-medium text-gray-900">
+                Premios
+            </h3>
         </div>
-        <div style="flex: 1; display: flex; justify-content: center; align-items: center; height: 100%;">
-            <img src="prizes-icons/{{prize.iconSrc}}" alt="{{ prize.name }}" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div class="px-4 py-5 sm:p-6">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+            @for (prize of prizesService.prizes(); track $index) {
+            <div class="text-center" key="i">
+                <img [src]='prize.iconSrc' [alt]="prize.name" class="mx-auto mb-2 w-24 h-24 object-cover rounded-md">
+                <p class="text-sm font-medium flex items-center justify-center">
+                    <img src="/icons/prize.svg" class="mr-2 h-6 w-6 text-blue-500">
+                    {{ prize.name }}
+                </p>
+            </div>
+            }
         </div>
-    </li>
-    }
-</ul>
+    </div>
+</div>

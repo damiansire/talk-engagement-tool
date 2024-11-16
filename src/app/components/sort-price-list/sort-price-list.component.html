@@ -1,17 +1,1 @@
 <h1>Premios!</h1>
-<button (click)="initSorteo()">Iniciar Sorteo</button>
-<button (click)="sortNewPrize()">Sortear</button>
-<button (click)="nextPrize()">Next</button>
-
-<ul style="display: flex; height: 100%; margin: 0;     flex-direction: column;">
-    @for (prize of sortPrizeService.sortedPrizes(); track $index) {
-    <li style="display: flex;">
-        <div style="text-align: center; align-content: center;">
-            <span style="text-align: center;">{{ prize.prizeName }}</span>
-        </div>
-        <div style="flex: 1; display: flex; justify-content: center; align-items: center; height: 100%;">
-            <img src="prizes-icons/{{prize.prizeIcon}}" alt="{{ prize.prizeName }}" style="width: 50px;">
-        </div>
-    </li>
-    }
-</ul>
