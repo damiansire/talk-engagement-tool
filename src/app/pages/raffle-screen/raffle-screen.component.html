@@ -1,1 +1,93 @@
-<p>raffle-screen works!</p>
+<div class="container mx-auto p-4 max-w-6xl">
+    <h1 class="text-3xl font-bold mb-6 text-center flex items-center justify-center">
+        <img src="/icons/trophy.svg" class="mr-2 h-8 w-8 text-yellow-500">
+        Página de Sorteo
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title flex items-center">
+                    <img src="/icons/prize.svg" class="lucide lucide-users mr-2 h-5 w-5">
+                    Premios Disponibles ({{ prizeService.prizesAmount() - sortService.currentPrizeIndex() }})
+                </div>
+            </div>
+
+            <div class="card-content">
+                <div class="scroll-area h-[200px] w-full rounded-md border p-4">
+                    @for (availablePrize of sortService.availablePrizes(); track $index) {
+                    @if(sortService.currentPrizeIndex() <= $index){ <div class="flex items-center space-x-2 mb-2">
+                        <img [src]="availablePrize.prize.iconSrc" [alt]="availablePrize.prize.name"
+                            class="w-8 h-8 object-cover rounded-md" />
+                        <span>{{ availablePrize.prize.name }}</span>
+                </div>
+                }
+
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title flex items-center">
+                <img src="/icons/player.svg" class="lucide lucide-users mr-2 h-5 w-5">
+                Participantes ({{ sortService.availableParticipants().length }})
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="scroll-area h-[200px] w-full rounded-md border p-4">
+                <div class="grid grid-cols-2 gap-2">
+                    @for (participant of sortService.availableParticipants(); track $index) {
+                    <div class="flex items-center space-x-2">
+                        <img [src]="participant.avatar_url" [alt]="participant.login" class="w-8 h-8 rounded-full" />
+                        <span class="text-sm">{{ participant.login }}</span>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card mb-6">
+    <div class="card-header">
+        <div class="card-title flex items-center" (click)="sortPrize()">
+            <i class="lucide lucide-ticket mr-2 h-5 w-5"></i>
+            Sortear Ganador
+        </div>
+    </div>
+
+    <div class="card-content text-center">
+        @if(sortService.currentPrize()){
+        <div class="mb-4">
+            <h3 class="text-xl font-semibold mb-2">Premio Actual</h3>
+            <div class="flex items-center justify-center space-x-4">
+                <img [src]="sortService.currentPrize().iconSrc" [alt]="sortService.currentPrize().name"
+                    class="w-16 h-16 object-cover rounded-md" />
+                <p class="font-medium">{{ sortService.currentPrize().name }}</p>
+            </div>
+        </div>
+        }
+
+        @if(sortService.currentWinner()){
+
+        <div class="mt-4">
+            <h3 class="text-xl font-semibold mb-2">Ganador Actual</h3>
+            <div class="flex items-center justify-center space-x-4">
+                <img [src]="sortService.currentWinner()?.user?.avatar_url"
+                    [alt]="sortService.currentWinner()?.user?.login" class="w-16 h-16 rounded-full" />
+                <div>
+                    <p class="font-medium">{{ sortService.currentWinner()?.user?.login }}</p>
+                    <p class="text-sm text-gray-500">Ganó: {{ sortService.currentWinner()?.prize?.name }}</p>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+
+</div>
