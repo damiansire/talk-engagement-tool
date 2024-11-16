@@ -1,17 +1,12 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { PrizesService } from './prizes.service';
 import { GithubService } from './github.service';
+import { Player } from '../interface/stars.interface';
+import { Prize } from '../interface/prizes.interface';
 
 interface Winner {
-  avatar_url: string;
-  login: string;
-}
-
-interface SortedPrize {
-  prizeName: string;
-  usernames: string[];
-  amount: number;
-  prizeIcon: string;
+  user: Player;
+  prize: Prize;
 }
 
 @Injectable({
@@ -20,32 +15,61 @@ interface SortedPrize {
 export class SortPrizeService {
   githubService = inject(GithubService);
   prizeService = inject(PrizesService);
-  sortedPrizes = signal<SortedPrize[]>([]);
-  nextPrize = signal<SortedPrize | undefined>(undefined);
-  winners = signal<Winner[]>([]);
-  constructor() {}
-  sortPrize() {
-    /*
-    const prizesToSort = this.prizeService.prizes();
 
-    const winnerLogins = this.winners().map((winner) => winner.login);
+  players = computed<Player[]>(() => {
+    return this.githubService.stars().map((x) => x.user);
+  });
 
-    const participantes = this.githubService
-      .stars()
-      .map((x) => {
-        return { login: x.user.login, avatar_url: x.user.avatar_url };
-      })
-      .filter((participante) => {
-        return !winnerLogins.includes(participante.login);
-      });
-*/
-  }
+  availableParticipants = computed(() => {
+    const winnerLogins = this.winners().map((winner) => winner.user.login);
 
-  setNextPrize() {
-    const newNextPrize = this.sortedPrizes().find(
-      (x) => x.usernames.length < x.amount
+    return this.players().filter(
+      (player) => !winnerLogins.includes(player.login)
     );
-    this.nextPrize.set(newNextPrize);
+  });
+
+  winners = signal<Winner[]>([]);
+
+  allPrizes = computed(() => {
+    return this.prizeService.prizes();
+  });
+
+  availablePrizes = computed(() => {
+    const pendingPrizes = [];
+    for (const prize of this.allPrizes()) {
+      for (let index = 0; index < prize.amount; index++) {
+        pendingPrizes.push({ amount: prize.amount, prize: prize });
+      }
+    }
+    return pendingPrizes;
+  });
+
+  currentPrizeIndex = signal(0);
+
+  currentPrize = computed<Prize>(() => {
+    return this.availablePrizes()[this.currentPrizeIndex()].prize;
+  });
+
+  currentWinner = signal<Winner | null>(null);
+
+  constructor() {}
+
+  sortPrize() {
+    const playerAmount = this.availableParticipants().length;
+    const winnerIndex = Math.floor((Math.random() * 100) % playerAmount);
+    this.winners.update((x) => {
+      const winners = x;
+      winners.push({
+        prize: this.currentPrize(),
+        user: this.availableParticipants()[winnerIndex],
+      });
+      return winners;
+    });
+    this.currentWinner.set({
+      user: this.availableParticipants()[winnerIndex],
+      prize: this.currentPrize(),
+    });
+    this.currentPrizeIndex.update((x) => x + 1);
   }
 
   initEnviorement() {
@@ -57,12 +81,5 @@ export class SortPrizeService {
         prizeIcon: x.iconSrc,
       };
     });
-    this.sortedPrizes.set(allPrizes);
   }
-}
-
-export interface Prize {
-  name: string;
-  iconSrc: string;
-  amount: number;
 }
