@@ -13,43 +13,5 @@
 </div>
 
 <div class="text-center flex justify-center">
-    <button size="lg" (click)="startRaffle()" class="flex items-center justify-center
-        bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold
-        py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform
-        hover:-translate-y-1 hover:scale-105">
-        <img src="/icons/shuffle.svg" class="mr-2 h-6 w-6 animate-spin">
-        <span className="text-lg">
-            ¡Iniciar Sorteo!
-        </span>
-    </button>
+    <app-raffle-button></app-raffle-button>
 </div>
-
-<!--
- ${isRaffleStarted ? 'opacity-50 cursor-not-allowed' : '' }
--->
-
-<!-- 
-<div>
-    <div style="display: flex; height: 90px;">
-        <div style="text-align: center;">
-            <button>Iniciar Sorteo</button>
-        </div>
-        <div style="flex-grow: 1;">
-        </div>
-
-    </div>
-    <div style="display: flex; margin-top: 20px;">
-        <app-players-information />
-        <div style="flex-grow: 1; padding: 1rem;">
-        </div>
-    </div>
-</div>
-
-Autorefresh cada 5 segundos
-
-    <button (click)="refresh()">Refresh</button>
-
-    <div>
-      <app-sort-price-list></app-sort-price-list>
-    </div>
-    -->

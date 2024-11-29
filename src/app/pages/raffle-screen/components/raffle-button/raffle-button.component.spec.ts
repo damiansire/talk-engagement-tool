@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GiveButtonComponent } from './give-button.component';
+import { RaffleButtonComponent } from './raffle-button.component';
 
-describe('GiveButtonComponent', () => {
-  let component: GiveButtonComponent;
-  let fixture: ComponentFixture<GiveButtonComponent>;
+describe('RaffleButtonComponent', () => {
+  let component: RaffleButtonComponent;
+  let fixture: ComponentFixture<RaffleButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GiveButtonComponent]
+      imports: [RaffleButtonComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GiveButtonComponent);
+    fixture = TestBed.createComponent(RaffleButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
