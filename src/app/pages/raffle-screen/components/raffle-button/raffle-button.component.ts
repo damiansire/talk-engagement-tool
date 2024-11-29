@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { SortPrizeService } from '../../../../services/sort-prize.service';
 
 @Component({
   selector: 'app-raffle-button',
@@ -9,9 +10,8 @@ import { Router } from '@angular/router';
   styleUrl: './raffle-button.component.css',
 })
 export class RaffleButtonComponent {
-  router = inject(Router);
-
-  startRaffleClick() {
-    this.router.navigate(['/raffle']);
+  sortService = inject(SortPrizeService);
+  sortPrize() {
+    this.sortService.sortPrize();
   }
 }

@@ -1,1 +1,21 @@
-<p>avalaible-prizes-raffle-screen works!</p>
+<div class="card">
+    <div class="card-header">
+        <div class="card-title flex items-center">
+            <img src="/icons/prize.svg" class="lucide lucide-users mr-2 h-5 w-5">
+            Premios Disponibles ({{ prizeService.prizesAmount() - sortService.currentPrizeIndex() }})
+        </div>
+    </div>
+
+    <div class="card-content">
+        <div class="scroll-area h-[200px] w-full rounded-md border p-4">
+            @for (availablePrize of sortService.availablePrizes(); track $index) {
+            @if(sortService.currentPrizeIndex() <= $index){ <div class="flex items-center space-x-2 mb-2">
+                <img [src]="availablePrize.prize.iconSrc" [alt]="availablePrize.prize.name"
+                    class="w-8 h-8 object-cover rounded-md" />
+                <span>{{ availablePrize.prize.name }}</span>
+        </div>
+        }
+
+        }
+    </div>
+</div>

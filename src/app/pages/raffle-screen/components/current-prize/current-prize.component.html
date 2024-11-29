@@ -1,1 +1,8 @@
-<p>current-prize works!</p>
+<div class="bg-white rounded-lg shadow p-4">
+    <h2 class="text-2xl font-semibold mb-4">Premio Actual</h2>
+    <div class="flex items-center space-x-4">
+        <img [src]="sortService.currentPrize().iconSrc" [alt]="sortService.currentPrize().name"
+            class="w-32 h-32 object-cover rounded-lg">
+        <span class="text-xl">{{sortService.currentPrize().name}}</span>
+    </div>
+</div>

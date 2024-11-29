@@ -2,12 +2,12 @@ import { Component, inject } from '@angular/core';
 import { SortPrizeService } from '../../../../services/sort-prize.service';
 
 @Component({
-  selector: 'app-winners-history',
+  selector: 'app-current-winner',
   standalone: true,
   imports: [],
-  templateUrl: './winners-history.component.html',
-  styleUrl: './winners-history.component.css',
+  templateUrl: './current-winner.component.html',
+  styleUrl: './current-winner.component.css',
 })
-export class WinnersHistoryComponent {
+export class CurrentWinnerComponent {
   sortService = inject(SortPrizeService);
 }

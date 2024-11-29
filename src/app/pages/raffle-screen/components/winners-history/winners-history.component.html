@@ -1,1 +1,16 @@
-<p>winners-history works!</p>
+<div class="bg-white rounded-lg shadow p-4 overflow-auto max-h-[calc(100vh-500px)]">
+    <h2 class="text-2xl font-semibold mb-4 sticky top-0 bg-white py-2 z-10">Historial de Ganadores</h2>
+    <div class="space-y-4">
+        @for (winner of sortService.winners(); track $index) {
+        <div class="flex items-center justify-between border-b pb-2">
+            <div class="flex items-center space-x-3">
+                <img [src]="winner.user.avatar_url" alt="Winner Avatar" class="w-12 h-12 rounded-full">
+                <div>
+                    <p class="font-medium">{{winner.user.login}}</p>
+                    <p class="text-sm text-gray-500">{{winner.prize.name}}</p>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="mt-4">
+    <h3 class="text-xl font-semibold mb-2">Ganador Actual</h3>
+    <div class="flex items-center justify-center space-x-4">
+        <img [src]="sortService.currentWinner()?.user?.avatar_url" [alt]="sortService.currentWinner()?.user?.login"
+            class="w-16 h-16 rounded-full" />
+        <div>
+            <p class="font-medium">{{ sortService.currentWinner()?.user?.login }}</p>
+            <p class="text-sm text-gray-500">Ganó: {{ sortService.currentWinner()?.prize?.name }}</p>
+        </div>
+    </div>
+</div>

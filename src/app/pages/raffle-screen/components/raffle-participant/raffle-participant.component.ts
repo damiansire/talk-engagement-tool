@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SortPrizeService } from '@services/sort-prize.service';
 
 @Component({
   selector: 'app-raffle-participant',
   standalone: true,
   imports: [],
   templateUrl: './raffle-participant.component.html',
-  styleUrl: './raffle-participant.component.css'
+  styleUrl: './raffle-participant.component.css',
 })
 export class RaffleParticipantComponent {
-
+  sortService = inject(SortPrizeService);
 }
