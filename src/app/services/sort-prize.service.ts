@@ -1,8 +1,8 @@
 import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { PrizesService } from './prizes.service';
 import { GithubService } from './github.service';
-import { Player } from '../interface/stars.interface';
-import { Prize } from '../interface/prizes.interface';
+import { Player } from '@interfaces/stars.interface';
+import { Prize } from '@interfaces/prizes.interface';
 
 interface Winner {
   user: Player;

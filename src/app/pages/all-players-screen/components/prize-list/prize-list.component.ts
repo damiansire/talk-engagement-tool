@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { PrizesService } from '../../services/prizes.service';
+import { PrizesService } from '@services/prizes.service';
 
 @Component({
   selector: 'app-prize-list',

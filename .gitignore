@@ -41,3 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 enviorements/enviorements.ts
+
+#mocks
+*.mock.ts

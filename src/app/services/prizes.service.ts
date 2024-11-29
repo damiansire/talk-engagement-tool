@@ -1,7 +1,7 @@
 import { computed, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { signal } from '@angular/core';
-import { Prize } from '../interface/prizes.interface';
+import { Prize } from '@interfaces/prizes.interface';
 
 @Injectable({
   providedIn: 'root',

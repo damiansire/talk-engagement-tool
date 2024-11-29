@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Prize } from '../../interface/prizes.interface';
+import { Prize } from '@interfaces/prizes.interface';
 import { GithubService } from '../../services/github.service';
 import { PrizesService } from '../../services/prizes.service';
 import { SortPrizeService } from '../../services/sort-prize.service';
