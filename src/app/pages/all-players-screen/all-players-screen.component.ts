@@ -6,16 +6,15 @@ import { RaffleButtonComponent } from '../raffle-screen/components/raffle-button
 import { StartRaffleButtonComponent } from './components/start-raffle-button/start-raffle-button.component';
 
 @Component({
-  selector: 'app-all-players-screen',
-  standalone: true,
-  imports: [
-    PlayersListComponent,
-    PrizeListComponent,
-    RaffleButtonComponent,
-    StartRaffleButtonComponent,
-  ],
-  templateUrl: './all-players-screen.component.html',
-  styleUrl: './all-players-screen.component.css',
+    selector: 'app-all-players-screen',
+    imports: [
+        PlayersListComponent,
+        PrizeListComponent,
+        RaffleButtonComponent,
+        StartRaffleButtonComponent,
+    ],
+    templateUrl: './all-players-screen.component.html',
+    styleUrl: './all-players-screen.component.css'
 })
 export class AllPlayersScreenComponent {
   title = 'github-raffle';

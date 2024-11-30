@@ -17,18 +17,17 @@ interface Participant {
 }
 
 @Component({
-  selector: 'app-raffle-screen',
-  standalone: true,
-  imports: [
-    AvalaiblePrizesRaffleScreenComponent,
-    RaffleParticipantComponent,
-    RaffleButtonComponent,
-    WinnersHistoryComponent,
-    CurrentPrizeComponent,
-    CurrentWinnerComponent,
-  ],
-  templateUrl: './raffle-screen.component.html',
-  styleUrl: './raffle-screen.component.css',
+    selector: 'app-raffle-screen',
+    imports: [
+        AvalaiblePrizesRaffleScreenComponent,
+        RaffleParticipantComponent,
+        RaffleButtonComponent,
+        WinnersHistoryComponent,
+        CurrentPrizeComponent,
+        CurrentWinnerComponent,
+    ],
+    templateUrl: './raffle-screen.component.html',
+    styleUrl: './raffle-screen.component.css'
 })
 export class RaffleScreenComponent {
   githubService = inject(GithubService);
