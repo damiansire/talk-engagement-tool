@@ -40,7 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-enviorements/enviorements.ts
 
-#mocks
-*.mock.ts
+# Environment variables
+src/environments/
