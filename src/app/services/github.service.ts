@@ -1,8 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { request } from '@octokit/request';
+import { GithubStarsResponse, StarredItem } from '../interfaces/stars.interface';
 import { environment } from '../../../enviorements/enviorements';
-import { starsMock } from './stars.mock';
-import { GithubStarsResponse, StarredItem } from '@interfaces/stars.interface';
 
 @Injectable({
   providedIn: 'root',
