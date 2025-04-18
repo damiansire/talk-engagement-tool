@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PlayersListComponent } from './components/players-list/players-list.component';
 import { PrizeListComponent } from './components/prize-list/prize-list.component';
 import { StartRaffleButtonComponent } from './components/start-raffle-button/start-raffle-button.component';
-import { GithubService } from '../../../../core/services/github/github.service';
+import { GithubService } from '@services/github/github.service';
 
 @Component({
   selector: 'app-all-players-screen',

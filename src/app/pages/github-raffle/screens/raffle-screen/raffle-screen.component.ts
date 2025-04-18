@@ -5,7 +5,7 @@ import { RaffleButtonComponent } from './components/raffle-button/raffle-button.
 import { WinnersHistoryComponent } from './components/winners-history/winners-history.component';
 import { CurrentPrizeComponent } from './components/current-prize/current-prize.component';
 import { CurrentWinnerComponent } from './components/current-winner/current-winner.component';
-import { GithubService } from '../../../../core/services/github/github.service';
+import { GithubService } from '@services/github/github.service';
 import { PrizesService } from '../../services/prizes.service';
 import { SortPrizeService } from '../../services/sort-prize.service';
 

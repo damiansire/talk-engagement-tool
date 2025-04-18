@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { PlayerCardComponent } from './player-card/player-card.component';
-import { GithubService } from '../../../../../../core/services/github/github.service';
+import { GithubService } from '@services/github/github.service';
 
 @Component({
   selector: 'app-players-list',
